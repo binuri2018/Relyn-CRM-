@@ -1,0 +1,21 @@
+services:
+  - type: web
+    name: crm-backend
+    env: python
+    region: oregon
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn app:create_app()
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.9
+      - key: ENV
+        value: production
+      - key: SECRET_KEY
+        generateValue: true
+      - key: JWT_SECRET_KEY
+        generateValue: true
+    databases:
+      - name: crm-db
+        dbName: crm_db
+        user: crm_user
+        region: oregon
