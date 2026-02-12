@@ -1,6 +1,6 @@
-# Simple CRM Backend
+# Relyn Backend
 
-Python Flask backend for Simple CRM.
+Python Flask backend for Relyn.
 
 Quick start:
 

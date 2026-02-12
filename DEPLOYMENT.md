@@ -1,6 +1,6 @@
-# CRM App Deployment Guide
+# Relyn Deployment Guide
 
-This guide will help you deploy the CRM app with the backend on Render and frontend on Netlify.
+This guide will help you deploy Relyn with the backend on Render and frontend on Netlify.
 
 ## Prerequisites
 
@@ -14,9 +14,9 @@ This guide will help you deploy the CRM app with the backend on Render and front
 ```bash
 git init
 git add .
-git commit -m "Initial CRM app with authentication"
+git commit -m "Initial Relyn app with authentication"
 git branch -M main
-git remote add origin https://github.com/YOUR_USERNAME/crm.git
+git remote add origin https://github.com/YOUR_USERNAME/relyn.git
 git push -u origin main
 ```
 
@@ -37,7 +37,7 @@ git push -u origin main
 2. Click **"New +"** → **"Web Service"**
 3. Connect your GitHub repository
 4. Fill in the configuration:
-   - **Name**: `crm-backend`
+   - **Name**: `relyn-backend`
    - **Root Directory**: `backend`
    - **Runtime**: `Python 3`
    - **Build Command**: `pip install -r requirements.txt`
@@ -49,7 +49,7 @@ git push -u origin main
    ```
 6. Create a PostgreSQL database:
    - Click **"New +"** → **"PostgreSQL"**
-   - Name: `crm-db`
+   - Name: `relyn-db`
    - Render will automatically provide `DATABASE_URL` environment variable
 7. Click **"Create Web Service"**
 

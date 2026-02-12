@@ -1,6 +1,6 @@
-# 📊 Simple CRM Platform
+# 🎯 Relyn
 
-A modern, full-stack Customer Relationship Management (CRM) application built with **React + Flask + SQLAlchemy**.
+A modern, full-stack Customer Relationship Management application built with **React + Flask + SQLAlchemy**.
 
 ## ✨ Features
 
@@ -295,4 +295,4 @@ MIT License - feel free to use this for learning and projects!
 
 ---
 
-**Happy CRM-ing! 📊✨**
+**Happy Relyn-ing! 🎯✨**

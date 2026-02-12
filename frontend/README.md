@@ -1,4 +1,4 @@
-# Simple CRM Frontend
+# Relyn Frontend
 
 Run:
 

@@ -38,17 +38,40 @@ export default function App(){
     <div className="container">
       <header>
         <div className="header-top">
-          <h1>📊 Simple CRM Platform</h1>
+          <h1>🎯 RELYN</h1>
           <div className="user-info">
-            <span>👤 {user.username} ({user.role})</span>
+            <div className="user-details">
+              <span className="username">{user.username}</span>
+              <span className="user-role">{user.role}</span>
+            </div>
             <button onClick={handleLogout} className="btn-logout">Logout</button>
           </div>
         </div>
         <nav>
-          <button onClick={()=>setRoute('dashboard')} style={{background: route==='dashboard' ? 'rgba(255,255,255,0.4)' : 'rgba(255,255,255,0.2)'}}>📈 Dashboard</button>
-          <button onClick={()=>setRoute('customers')} style={{background: route==='customers' ? 'rgba(255,255,255,0.4)' : 'rgba(255,255,255,0.2)'}}>👥 Customers</button>
-          <button onClick={()=>setRoute('deals')} style={{background: route==='deals' ? 'rgba(255,255,255,0.4)' : 'rgba(255,255,255,0.2)'}}>🤝 Deals</button>
-          <button onClick={()=>setRoute('activities')} style={{background: route==='activities' ? 'rgba(255,255,255,0.4)' : 'rgba(255,255,255,0.2)'}}>✅ Activities</button>
+          <button 
+            onClick={()=>setRoute('dashboard')} 
+            className={`nav-btn ${route === 'dashboard' ? 'active' : ''}`}
+          >
+            📈 Dashboard
+          </button>
+          <button 
+            onClick={()=>setRoute('customers')} 
+            className={`nav-btn ${route === 'customers' ? 'active' : ''}`}
+          >
+            👥 Customers
+          </button>
+          <button 
+            onClick={()=>setRoute('deals')} 
+            className={`nav-btn ${route === 'deals' ? 'active' : ''}`}
+          >
+            🤝 Deals
+          </button>
+          <button 
+            onClick={()=>setRoute('activities')} 
+            className={`nav-btn ${route === 'activities' ? 'active' : ''}`}
+          >
+            ✅ Activities
+          </button>
         </nav>
       </header>
       <main>
@@ -62,34 +85,92 @@ export default function App(){
           display: flex;
           justify-content: space-between;
           align-items: center;
-          margin-bottom: 20px;
+          margin-bottom: 24px;
+          padding-bottom: 16px;
+          border-bottom: 2px solid rgba(255, 255, 255, 0.1);
         }
 
         .header-top h1 {
           margin: 0;
+          font-size: 32px;
+          font-weight: 700;
+          letter-spacing: 2px;
         }
 
         .user-info {
           display: flex;
           align-items: center;
-          gap: 15px;
+          gap: 20px;
           color: white;
+        }
+
+        .user-details {
+          display: flex;
+          flex-direction: column;
+          align-items: flex-end;
+          gap: 4px;
+        }
+
+        .username {
+          font-weight: 600;
           font-size: 14px;
         }
 
+        .user-role {
+          font-size: 12px;
+          opacity: 0.85;
+          text-transform: uppercase;
+          letter-spacing: 0.5px;
+          font-weight: 500;
+        }
+
         .btn-logout {
-          padding: 8px 16px;
-          background: rgba(255,255,255,0.2);
-          border: 1px solid rgba(255,255,255,0.5);
+          padding: 10px 20px;
+          background: rgba(255, 255, 255, 0.2);
+          border: 2px solid rgba(255, 255, 255, 0.4);
           color: white;
-          border-radius: 5px;
+          border-radius: 8px;
           cursor: pointer;
           font-weight: 600;
-          transition: background 0.3s;
+          transition: all 0.3s ease;
+          font-size: 14px;
         }
 
         .btn-logout:hover {
-          background: rgba(255,255,255,0.3);
+          background: rgba(255, 255, 255, 0.3);
+          border-color: rgba(255, 255, 255, 0.7);
+          transform: translateY(-2px);
+          box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        nav {
+          display: flex;
+          gap: 12px;
+          flex-wrap: wrap;
+        }
+
+        .nav-btn {
+          background: rgba(255, 255, 255, 0.15);
+          color: white;
+          border: 2px solid rgba(255, 255, 255, 0.3);
+          padding: 10px 18px;
+          border-radius: 8px;
+          cursor: pointer;
+          font-weight: 600;
+          transition: all 0.3s ease;
+          font-size: 14px;
+        }
+
+        .nav-btn:hover {
+          background: rgba(255, 255, 255, 0.25);
+          border-color: rgba(255, 255, 255, 0.6);
+          transform: translateY(-2px);
+        }
+
+        .nav-btn.active {
+          background: rgba(255, 255, 255, 0.35);
+          border-color: white;
+          box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
         }
       `}</style>
     </div>

@@ -34,174 +34,362 @@ export default function Login({ onLoginSuccess }) {
 
   return (
     <div className="login-container">
-      <div className="login-card">
-        <h1>📊 CRM Platform</h1>
-        <h2>{isSignUp ? 'Sign Up' : 'Login'}</h2>
-        
-        {error && <div className="error-message">{error}</div>}
+      <div className="login-left">
+        <div className="login-branding">
+          <h1 className="logo-title"> RELYN</h1>
+          
+          <div className="feature-list">
+            <div className="feature-item">✓ Manage Customers</div>
+            <div className="feature-item">✓ Track Deals</div>
+            <div className="feature-item">✓ Log Activities</div>
+            <div className="feature-item">✓ Real-time Dashboard</div>
+          </div>
+        </div>
+      </div>
 
-        <form onSubmit={handleSubmit}>
-          <div className="form-group">
-            <label>Username</label>
-            <input
-              type="text"
-              value={username}
-              onChange={(e) => setUsername(e.target.value)}
-              placeholder="Enter username"
-              required
-            />
+      <div className="login-right">
+        <div className="login-card">
+          <div className="app-branding">
+            <h1 className="app-logo"> RELYN</h1>
+            
           </div>
 
-          <div className="form-group">
-            <label>Password</label>
-            <input
-              type="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              placeholder="Enter password"
-              required
-            />
+          <div className="login-header">
+            <h2>{isSignUp ? 'Create Account' : 'Welcome Back'}</h2>
+            <p>{isSignUp ? 'Join our platform' : 'Sign in to your account'}</p>
           </div>
+          
+          {error && <div className="error-message">{error}</div>}
 
-          {isSignUp && (
+          <form onSubmit={handleSubmit}>
             <div className="form-group">
-              <label>Role</label>
-              <select value={role} onChange={(e) => setRole(e.target.value)}>
-                <option value="Sales">Sales</option>
-                <option value="Manager">Manager</option>
-                <option value="Admin">Admin</option>
-              </select>
+              <label>Email or Username</label>
+              <input
+                type="text"
+                value={username}
+                onChange={(e) => setUsername(e.target.value)}
+                placeholder="username@example.com"
+                required
+              />
             </div>
-          )}
 
-          <button type="submit" disabled={loading} className="btn-primary">
-            {loading ? 'Processing...' : (isSignUp ? 'Sign Up' : 'Login')}
-          </button>
-        </form>
+            <div className="form-group">
+              <label>Password</label>
+              <input
+                type="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                placeholder="••••••••"
+                required
+              />
+            </div>
 
-        <p className="toggle-auth">
-          {isSignUp ? 'Already have an account? ' : "Don't have an account? "}
-          <button 
-            type="button" 
-            onClick={() => setIsSignUp(!isSignUp)}
-            className="link-button"
-          >
-            {isSignUp ? 'Login' : 'Sign Up'}
-          </button>
-        </p>
+            {isSignUp && (
+              <div className="form-group">
+                <label>Role</label>
+                <select value={role} onChange={(e) => setRole(e.target.value)}>
+                  <option value="Sales">Sales Representative</option>
+                  <option value="Manager">Sales Manager</option>
+                  <option value="Admin">Administrator</option>
+                </select>
+              </div>
+            )}
+
+            <button type="submit" disabled={loading} className="btn-primary">
+              {loading ? 'Processing...' : (isSignUp ? 'Create Account' : 'Sign In')}
+            </button>
+          </form>
+
+          <div className="auth-divider">
+            <span>{isSignUp ? 'or' : 'or'}</span>
+          </div>
+
+          <p className="toggle-auth">
+            {isSignUp ? 'Already have an account? ' : "Don't have an account? "}
+            <button 
+              type="button" 
+              onClick={() => setIsSignUp(!isSignUp)}
+              className="link-button"
+            >
+              {isSignUp ? 'Sign In' : 'Sign Up'}
+            </button>
+          </p>
+        </div>
       </div>
 
       <style>{`
         .login-container {
           display: flex;
+          min-height: 100vh;
+          background: #f5f7fa;
+        }
+
+        .login-left {
+          display: none;
+          flex: 1;
+          background: linear-gradient(135deg, #1e3a8a 0%, #0f172a 100%);
+          color: white;
+          padding: 60px 40px;
           justify-content: center;
           align-items: center;
-          min-height: 100vh;
-          background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+          position: relative;
+          overflow: hidden;
+        }
+
+        .login-left::before {
+          content: '';
+          position: absolute;
+          top: -50%;
+          right: -50%;
+          width: 500px;
+          height: 500px;
+          background: rgba(59, 130, 246, 0.1);
+          border-radius: 50%;
+        }
+
+        .login-left::after {
+          content: '';
+          position: absolute;
+          bottom: -30%;
+          left: -30%;
+          width: 300px;
+          height: 300px;
+          background: rgba(99, 102, 241, 0.1);
+          border-radius: 50%;
+        }
+
+        .login-branding {
+          position: relative;
+          z-index: 1;
+          text-align: center;
+        }
+
+        .logo-title {
+          font-size: 48px;
+          font-weight: 700;
+          margin-bottom: 10px;
+          letter-spacing: 2px;
+        }
+
+        .logo-subtitle {
+          font-size: 18px;
+          opacity: 0.9;
+          margin-bottom: 50px;
+          font-weight: 300;
+        }
+
+        .feature-list {
+          display: grid;
+          gap: 15px;
+          text-align: left;
+        }
+
+        .feature-item {
+          font-size: 16px;
+          padding: 8px 0;
+          opacity: 0.95;
+        }
+
+        .login-right {
+          flex: 1;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          padding: 40px 20px;
         }
 
         .login-card {
           background: white;
-          padding: 40px;
-          border-radius: 10px;
-          box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+          padding: 50px;
+          border-radius: 12px;
+          box-shadow: 0 20px 60px rgba(0, 0, 0, 0.08);
           width: 100%;
-          max-width: 400px;
+          max-width: 420px;
         }
 
-        .login-card h1 {
+        .app-branding {
           text-align: center;
-          font-size: 24px;
-          margin-bottom: 10px;
-          color: #333;
+          margin-bottom: 36px;
+          padding-bottom: 28px;
+          border-bottom: 2px solid #e2e8f0;
         }
 
-        .login-card h2 {
+        .app-logo {
+          font-size: 36px;
+          font-weight: 700;
+          margin: 0;
+          letter-spacing: 2px;
+          color: #1e3a8a;
+          margin-bottom: 6px;
+        }
+
+        .app-tagline {
+          font-size: 13px;
+          color: #64748b;
+          margin: 0;
+          font-weight: 500;
+          letter-spacing: 0.3px;
+        }
+
+        .login-header {
+          margin-bottom: 40px;
           text-align: center;
-          font-size: 18px;
-          margin-bottom: 30px;
-          color: #667eea;
+        }
+
+        .login-header h2 {
+          font-size: 28px;
+          font-weight: 700;
+          color: #1e293b;
+          margin-bottom: 8px;
+        }
+
+        .login-header p {
+          font-size: 14px;
+          color: #64748b;
+          font-weight: 500;
         }
 
         .form-group {
-          margin-bottom: 20px;
+          margin-bottom: 22px;
         }
 
         .form-group label {
           display: block;
           margin-bottom: 8px;
-          font-weight: 500;
-          color: #333;
+          font-weight: 600;
+          color: #334155;
+          font-size: 14px;
         }
 
         .form-group input,
         .form-group select {
           width: 100%;
-          padding: 12px;
-          border: 1px solid #ddd;
-          border-radius: 5px;
+          padding: 12px 14px;
+          border: 2px solid #e2e8f0;
+          border-radius: 8px;
           font-size: 14px;
           box-sizing: border-box;
-          transition: border-color 0.3s;
+          transition: all 0.3s;
+          font-family: inherit;
+          background: #f8fafc;
+        }
+
+        .form-group input::placeholder {
+          color: #94a3b8;
         }
 
         .form-group input:focus,
         .form-group select:focus {
           outline: none;
-          border-color: #667eea;
-          box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+          border-color: #3b82f6;
+          background: white;
+          box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.08);
+        }
+
+        .form-group input:hover,
+        .form-group select:hover {
+          border-color: #cbd5e1;
         }
 
         .btn-primary {
           width: 100%;
-          padding: 12px;
-          background: #667eea;
+          padding: 12px 20px;
+          background: linear-gradient(135deg, #1e3a8a 0%, #1e40af 100%);
           color: white;
           border: none;
-          border-radius: 5px;
-          font-size: 16px;
+          border-radius: 8px;
+          font-size: 15px;
           font-weight: 600;
           cursor: pointer;
-          transition: background 0.3s;
+          transition: all 0.3s;
+          letter-spacing: 0.5px;
+          margin-top: 8px;
         }
 
         .btn-primary:hover:not(:disabled) {
-          background: #5568d3;
+          transform: translateY(-2px);
+          box-shadow: 0 10px 20px rgba(30, 58, 138, 0.3);
         }
 
         .btn-primary:disabled {
-          background: #999;
+          background: #cbd5e1;
           cursor: not-allowed;
+          transform: none;
         }
 
         .error-message {
-          background: #fee;
-          color: #c33;
-          padding: 12px;
-          border-radius: 5px;
-          margin-bottom: 20px;
-          border-left: 4px solid #c33;
+          background: #fee2e2;
+          color: #b91c1c;
+          padding: 14px;
+          border-radius: 8px;
+          margin-bottom: 24px;
+          border-left: 4px solid #dc2626;
+          font-size: 14px;
+          font-weight: 500;
+        }
+
+        .auth-divider {
+          display: flex;
+          align-items: center;
+          margin: 28px 0;
+          color: #94a3b8;
+        }
+
+        .auth-divider::before,
+        .auth-divider::after {
+          content: '';
+          flex: 1;
+          height: 1px;
+          background: #e2e8f0;
+        }
+
+        .auth-divider span {
+          padding: 0 12px;
+          font-size: 13px;
+          font-weight: 500;
         }
 
         .toggle-auth {
           text-align: center;
-          margin-top: 20px;
-          color: #666;
+          color: #475569;
           font-size: 14px;
+          font-weight: 500;
         }
 
         .link-button {
           background: none;
           border: none;
-          color: #667eea;
+          color: #3b82f6;
           cursor: pointer;
-          text-decoration: underline;
+          text-decoration: none;
           font-weight: 600;
-          padding: 0;
+          padding: 0 4px;
+          transition: all 0.3s;
         }
 
         .link-button:hover {
-          color: #5568d3;
+          color: #1e40af;
+          text-decoration: underline;
+        }
+
+        @media (min-width: 768px) {
+          .login-left {
+            display: flex;
+          }
+        }
+
+        @media (max-width: 768px) {
+          .login-container {
+            flex-direction: column;
+          }
+
+          .login-right {
+            min-height: 100vh;
+          }
+
+          .login-card {
+            padding: 40px 30px;
+          }
         }
       `}</style>
     </div>
